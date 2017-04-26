@@ -1,8 +1,8 @@
+from model.contact import Contact
 import pytest
 from fixture.application2 import Application2
-from model.contact import Contact
 
-@pytest.fixture
+@pytest.fixture(scope = "session")
 def app(request):
     fixture = Application2()
     request.addfinalizer(fixture.destroy)
