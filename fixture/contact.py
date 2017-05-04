@@ -5,7 +5,8 @@ class ContactHelper:
 
     def open_add_contact_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("add new").click()
+        if not (wd.current_url.endswith("addressbook/") and len(wd.find_elements_by_css_selector("img[alt='Edit']")) > 0):
+            wd.find_element_by_link_text("add new").click()
 
     def return_to_contact_page(self):
         wd = self.app.wd
