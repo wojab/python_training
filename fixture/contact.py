@@ -138,7 +138,7 @@ class ContactHelper:
             for element in wd.find_elements_by_css_selector("td.center"):
                 text = element.text
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cach.append(Contact(lastname=text, id=id))
+                self.contact_cache.append(Contact(lastname=text, id=id))
         return list(self.contact_cache)
 
 
