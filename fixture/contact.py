@@ -130,18 +130,29 @@ class ContactHelper:
 
     contact_cache = None
 
+    # def get_contacts_list(self):
+    #     if self.contact_cache is None:
+    #         wd = self.app.wd
+    #         self.return_to_contact_page()
+    #         self.contact_cache = []
+    #         for element in wd.find_elements_by_css_selector("tr.odd"):
+    #             text = element.text
+    #             id = element.find_element_by_name("selected[]").get_attribute("value")
+    #             self.contact_cache.append(Contact(lastname=text, id=id))
+    #     return list(self.contact_cache)
+
     def get_contacts_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
             self.return_to_contact_page()
             self.contact_cache = []
-            for element in wd.find_elements_by_css_selector("td.center"):
-                text = element.text
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cache.append(Contact(lastname=text, id=id))
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                lastname = cells[1].text
+                name = cells[2].text
+                id = cells[0].find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contact(name=name, lastname=lastname, id=id))
         return list(self.contact_cache)
-
-
 
 
 
