@@ -13,9 +13,9 @@ class Contact:
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) and self.name == other.name and self.lastname == other.lastname
 
-    def id_or_max(gr):
-        if gr.id:
-            return int(gr.id)
+    def id_or_max(cr):
+        if cr.id:
+            return int(cr.id)
         else:
             return maxsize
 
