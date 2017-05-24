@@ -50,20 +50,6 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def edit_group(self):
-        wd=self.app.wd
-        self.open_groups_page()
-        self.select_first_group()
-        wd.find_element_by_name("edit").click()
-        #type new value
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("edytowana grupa")
-        #save new value
-        wd.find_element_by_name("update").click()
-        self.return_to_groups_page()
-        self.group_cache = None
-
     def return_to_groups_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()

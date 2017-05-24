@@ -91,7 +91,8 @@ class ContactHelper:
         wd = self.app.wd
         self.return_to_contact_page()
         self.select_contact_by_index(index)
-        wd.find_element_by_css_selector("img[alt='Edit']").click()
+        wd.find_elements_by_css_selector("img[alt='Edit']")[index].click()
+       # wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         self.fill_contact_form(new_contact_data)
         wd.find_element_by_name("update").click()
         wd.implicitly_wait(10)
