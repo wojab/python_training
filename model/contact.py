@@ -23,7 +23,7 @@ class Contact:
             return maxsize
 
 
-# def __init__(self, firstname, middlename, lastname, nickname, title, company, address, home, mobile, work,
+# def __init__(self, nickname, title, company, address,
     #                    fax, email, email3, email2, homepage, byear, ayear, address2):
     #     self.firstname=firstname
     #     self.middlename=middlename
@@ -32,9 +32,6 @@ class Contact:
     #     self.title=title
     #     self.company=company
     #     self.address=address
-    #     self.home=home
-    #     self.mobile=mobile
-    #     self.work=work
     #     self.fax=fax
     #     self.email=email
     #     self.email3=email3
