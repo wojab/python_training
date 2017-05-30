@@ -16,8 +16,9 @@ import re
 
 
 s = "adam marek danuta"
-m = re.search("(.*)", s)
-print (m)
-print(m.group())
-
-
+# m = re.search("(.*)", s)
+# print (m)
+# print(m.group())
+#
+a = s.split(" ")[0]
+print(a)
