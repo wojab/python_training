@@ -100,6 +100,16 @@ class ContactHelper:
         wd.implicitly_wait(10)
         self.contact_cache = None
 
+    def modify_contact_by_id(self, index, id, new_contact_data):
+        wd = self.app.wd
+        self.return_to_contact_page()
+        self.select_contact_by_id(id)
+        wd.find_elements_by_css_selector("img[alt='Edit']")[index].click()
+        self.fill_contact_form(new_contact_data)
+        wd.find_element_by_name("update").click()
+        wd.implicitly_wait(10)
+        self.contact_cache = None
+
     def del_first_contact(self):
         self.delete_contact_by_index(0)
 
@@ -111,6 +121,19 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         wd.implicitly_wait(10)
         self.contact_cache = None
+
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.return_to_contact_page()
+        self.select_contact_by_id(id)
+        wd.find_element_by_xpath("//div[@id ='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        wd.implicitly_wait(10)
+        self.contact_cache = None
+
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value = '%s']" % id).click()
 
     def select_first_contact(self):
         wd = self.app.wd
