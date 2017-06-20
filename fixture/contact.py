@@ -1,4 +1,5 @@
 from model.contact import Contact
+from selenium.webdriver.support.ui import Select
 import re
 
 class ContactHelper:
@@ -216,6 +217,26 @@ class ContactHelper:
         firstname =  text.split(" ")[0]
 
         return Contact(homephone=homephone, mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone, firstname=firstname)
+
+    def add_contact_to_group(self, id):
+        wd = self.app.wd
+        self.return_to_contact_page()
+        self.select_contact_by_id(id)
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text("PowiazGrupa")
+        wd.find_element_by_name("add").click()
+
+    def open_groups_page(self):
+        wd = self.app.wd
+        Select(wd.find_element_by_name("group")).select_by_visible_text("PowiazGrupa")
+
+    def del_first_contact_from_group(self, id):
+        wd = self.app.wd
+        self.return_to_contact_page()
+        self.open_groups_page()
+        self.select_contact_by_id(id)
+        wd.find_element_by_name("remove").click()
+
+
 
 
 
