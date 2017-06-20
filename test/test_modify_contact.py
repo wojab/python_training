@@ -7,9 +7,9 @@ def test_edit_contact(app, db, check_ui):
 
     old_contacts = db.get_contacts_list()
     index = randrange(len(old_contacts))
-    contact = Contact(firstname="Random edited firstname", lastname="Random edited lastname")
+    contact = Contact(firstname="Random edited michal", lastname="Random edited aga")
     contact.id = old_contacts[index].id
-    app.contact.modify_contact_by_id(index, contact.id, contact)
+    app.contact.modify_contact_by_id(contact.id, contact)
     new_contacts = db.get_contacts_list()
     assert len(old_contacts) == len(new_contacts)
     old_contacts[index] = contact

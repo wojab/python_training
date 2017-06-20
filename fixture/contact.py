@@ -100,11 +100,12 @@ class ContactHelper:
         wd.implicitly_wait(10)
         self.contact_cache = None
 
-    def modify_contact_by_id(self, index, id, new_contact_data):
+    def modify_contact_by_id(self, id, new_contact_data):
         wd = self.app.wd
         self.return_to_contact_page()
-        self.select_contact_by_id(id)
-        wd.find_elements_by_css_selector("img[alt='Edit']")[index].click()
+        print(id)
+      #  self.select_contact_by_id(id)
+        wd.find_element_by_xpath("//input[@id= '%s']/../following-sibling::td[@class='center']/a/img[@alt='Edit']"%id).click()
         self.fill_contact_form(new_contact_data)
         wd.find_element_by_name("update").click()
         wd.implicitly_wait(10)
