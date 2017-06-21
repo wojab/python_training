@@ -10,7 +10,7 @@ def group_list(db):
 
 @given("a group with <name>, <header> and <footer>")
 def new_group(name, header, footer):
-    return (Group(name=name, header=header, footer=footer))
+    return Group(name=name, header=header, footer=footer)
 
 
 @when("I add a new group to the list")
