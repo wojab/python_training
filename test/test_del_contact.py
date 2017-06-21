@@ -5,6 +5,7 @@ def test_del_first_contact(app, db, check_ui):
     if len(db.get_contacts_list()) == 0:
         app.contact.create(Contact(firstname="deltest_firstname", lastname="deltest_last_name"))
     old_contacts = db.get_contacts_list()
+    print(old_contacts)
     contact = random.choice(old_contacts)
     app.contact.delete_contact_by_id(contact.id)
     new_contacts = db.get_contacts_list()

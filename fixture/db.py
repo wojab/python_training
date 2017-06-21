@@ -41,14 +41,14 @@ class DbFixture:
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id from address_in_groups where deprecated='0000-00-00 00:00:00'")
+            cursor.execute("select aig.id, a.firstname, a.lastname, aig.deprecated from address_in_groups as aig, addressbook as a where a.deprecated='0000-00-00 00:00:00' and a.id = aig.id")
             for row in cursor:
-                (id) = row
-                list.append(Contact(id=str(id)))
+                (id, firstname, lastname, deprecated) = row
+                list.append(Contact(id=str(id),firstname = firstname, lastname = lastname))
 
         finally:
             cursor.close()
-        return  list
+        return list
 
 
     def destroy(self):

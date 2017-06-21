@@ -11,9 +11,16 @@ def test_add_contact_to_group(app, db, check_ui):
         app.group.create(Group(name="Nowa_grupa"))
 
     old_contacts = db.get_contacts_list()
+    old_contacts_in_groups = db.get_contacts_in_groups_list()
     contact = random.choice(old_contacts)
     app.contact.add_contact_to_group(contact.id)
-    # new_contacts = db.get_contacts_list()
-    # if check_ui:
-    #     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    new_contacts_in_groups = db.get_contacts_in_groups_list()
+    old_contacts_in_groups.append(contact)
+    assert sorted(old_contacts_in_groups, key=Contact.id_or_max) == sorted(new_contacts_in_groups, key=Contact.id_or_max)
+
+
+
+
+
+
 

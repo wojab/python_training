@@ -20,6 +20,7 @@ class ContactHelper:
         self.open_add_contact_page()
         self.fill_contact_form(contact)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.return_to_contact_page()
         wd.implicitly_wait(5)
         self.contact_cache = None
       #  self.return_to_contact_page()
@@ -229,7 +230,7 @@ class ContactHelper:
         wd = self.app.wd
         Select(wd.find_element_by_name("group")).select_by_visible_text("PowiazGrupa")
 
-    def del_first_contact_from_group(self, id):
+    def del_contact_from_group(self, id):
         wd = self.app.wd
         self.return_to_contact_page()
         self.open_groups_page()
